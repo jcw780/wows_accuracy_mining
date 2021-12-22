@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize as normalize
 
 sigma = 1.9
-dispersion = 160
-fallAngle = 7.607
+dispersion = 240
+fallAngle = 18.989
 verticalCompression = 1/np.sin(np.deg2rad(fallAngle))
 
 nsCDF = norm.cdf(-1*sigma)
@@ -24,10 +24,17 @@ print(output)
 x = np.cos(angle) * output
 y = np.sin(angle) * output * verticalCompression
 
-fig = plt.figure(figsize=(7,7))
-graph = fig.add_subplot(111)
-graph.set_xlim([-600, 600])
-graph.set_ylim([-600, 600])
-graph.hexbin(x, y, gridsize=(100, 100), norm=normalize(vmin=0, vmax=100))
+size = 1250
 
+fig = plt.figure(figsize=(8,8))
+'''graph = fig.add_subplot(121)
+graph.set_xlim([-size, size])
+graph.set_ylim([-size, size])
+graph.hexbin(x, y, gridsize=(100, 100), norm=normalize(vmin=0, vmax=100))'''
+'''
+scatter = fig.add_subplot(111)
+scatter.set_xlim([-size, size])
+scatter.set_ylim([-size, size])
+scatter.scatter(x, y, s=0.0001)
+'''
 plt.show()
